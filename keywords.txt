@@ -1,0 +1,33 @@
+#######################################
+# Syntax Coloring Map For VoltSensor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+VoltSensor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setResistor	KEYWORD2
+setBitRef	KEYWORD2
+setVoltRef	KEYWORD2
+setVoutCalib	KEYWORD2
+Vout		KEYWORD2
+Vin		KEYWORD2
+BattPersen	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+DEFAULT_LINEAR_A	LITERAL1
+DEFAULT_LINEAR_B	LITERAL1
+
+#######################################
+# (END)
+#######################################
+
