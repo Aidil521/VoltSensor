@@ -7,18 +7,15 @@
 #define DEFAULT_R2 7500.00
 #define DEFAULT_BIT 4095.00
 #define DEFAULT_VOLT 5.00
-#define DEFAULT_LINEAR_A 0.0008
-#define DEFAULT_LINEAR_B 0.1798
+#define DEFAULT_LINEAR_A 0.6589
+#define DEFAULT_LINEAR_B 0.1554
 // #define DEFAULT_LINEAR_C 0.9947
 // #define DEFAULT_LINEAR_D 0.0296
+// #define DEFAULT_CALIB_VIN 1.01864407
 
 class VoltSensor {
     public:
-    
         VoltSensor(int pinADC);
-        // float _c = DEFAULT_LINEAR_C;
-        // float _d = DEFAULT_LINEAR_D;
-
         void setResistor(int R1, int R2);
         void setBitRef(float nilai);
         void setVoltRef(float volt);
@@ -26,6 +23,7 @@ class VoltSensor {
         // void setVinCalib(float c, float d);
         float Vout();
         // float Vinreal();
+        // float Vin();
         float Vin();
         int BattPersen(float Volt_Min, float Volt_Max);
 
@@ -39,7 +37,8 @@ class VoltSensor {
         float _voltRef = DEFAULT_VOLT;
         float _a = DEFAULT_LINEAR_A;
         float _b = DEFAULT_LINEAR_B;
-        
+        // float _c = DEFAULT_LINEAR_C;
+        // float _d = DEFAULT_LINEAR_D;
 };
 
 #endif

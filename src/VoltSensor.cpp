@@ -38,32 +38,31 @@ float VoltSensor::Vout() {
     }
     read_adc /= 200;
     float Vout_real = ((float)read_adc * _voltRef) / _bitRef;
-    float Vout_Calib = 0.6589*Vout_real + 0.1554;
+    float Vout_Calib = (_a * Vout_real) + _b;
     return Vout_Calib;
 }
 
 // float VoltSensor::Vinreal() {
-//     //Formula Linear y = ax + b; (x = adc) and (y = Vout Real)
-//     float Volt = Vout() / (_R2 / (_R1 + _R2)); 
-//     return Volt;
+    //Formula Voltage Divider: Vin = Vout / (R2/(R1+R2))
+//     float Vin_real = Vout() / (_R2 / (_R1 + _R2)); 
+//     return Vin_real;
+// }
+
+// float VoltSensor::Vin() {
+//     //Formula Linear y = cx + d, x = Vout / (R2/(R1+R2)) and (y = Vin Real)
+//     // float Vin_Calib = _c * Vinreal() + _d;
+//     return Vin_Calib;
 // }
 
 float VoltSensor::Vin() {
-    //Formula Linear y = cx + d; (x = Vout / B) and (y = Vin Real)
-    //Value B = R2/(R1+R2)
-    // float Volt = _c * Vinreal() + _d;
-    float Vin_real = Vout() / (_R2 / (_R1 + _R2));  
-    // float Vin_Calib = 0.063 + 1.0148 * Vin_real;
+    //Formula Voltage Divider: Vin = Vout / (R2/(R1+R2))
+    float Vin_real = Vout() / (_R2 / (_R1 + _R2)); 
     return Vin_real;
 }
 
 int VoltSensor::BattPersen(float Volt_Min, float Volt_Max) {
-    _baterai = map((Vin()*10.0), (Volt_Min * 10.0), (Volt_Max * 10.0), 0, 100);
-    if(_baterai > 100) {
-        _baterai = 100;
-    }
-    else if(_baterai < 0) {
-        _baterai = 0;
-    }
+    _baterai = map((Vin() * 10.0), (Volt_Min * 10.0), (Volt_Max * 10.0), 0, 100);
+    if(_baterai > 100) _baterai = 100;
+    if(_baterai < 0)   _baterai = 0;
     return _baterai;
 }
