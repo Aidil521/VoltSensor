@@ -1,12 +1,15 @@
 #include <VoltSensor.h>
 
-VoltSensor::VoltSensor(int pinADC) {
+VoltSensor::VoltSensor() {
+    // setVinCalib(_c, _d);
+}
+
+void VoltSensor::setPins(int pinADC) {
     _pinADC = pinADC;
     setResistor(_R1, _R2);
     setVoltRef(_voltRef);
     setBitRef(_bitRef);
     setVoutCalib(_a, _b);
-    // setVinCalib(_c, _d);
 }
 
 void VoltSensor::setResistor(int R1, int R2) {
@@ -60,9 +63,11 @@ float VoltSensor::Vin() {
     return Vin_real;
 }
 
-int VoltSensor::BattPersen(float Volt_Min, float Volt_Max) {
-    _baterai = map((Vin() * 10.0), (Volt_Min * 10.0), (Volt_Max * 10.0), 0, 100);
-    if(_baterai > 100) _baterai = 100;
-    if(_baterai < 0)   _baterai = 0;
-    return _baterai;
-}
+// int VoltSensor::BattPersen(float Volt_Min, float Volt_Max) {
+//     _baterai = map((Vin() * 10.0), (Volt_Min * 10.0), (Volt_Max * 10.0), 0, 100);
+//     if(_baterai > 100) _baterai = 100;
+//     if(_baterai < 0)   _baterai = 0;
+//     return _baterai;
+// }
+
+VoltSensor Volt;

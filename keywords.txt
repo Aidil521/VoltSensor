@@ -7,11 +7,13 @@
 #######################################
 
 VoltSensor	KEYWORD1
+Volt		KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
+setPins		KEYWORD2
 setResistor	KEYWORD2
 setBitRef	KEYWORD2
 setVoltRef	KEYWORD2

@@ -1,5 +1,5 @@
-#ifndef VOLT_SENSOR
-#define VOLT_SENSOR
+#ifndef VOLT_SENSOR_H
+#define VOLT_SENSOR_H
 
 #include <Arduino.h>
 
@@ -15,7 +15,8 @@
 
 class VoltSensor {
     public:
-        VoltSensor(int pinADC);
+        VoltSensor();
+        void setPins(int pinADC);
         void setResistor(int R1, int R2);
         void setBitRef(float nilai);
         void setVoltRef(float volt);
@@ -25,7 +26,7 @@ class VoltSensor {
         // float Vinreal();
         // float Vin();
         float Vin();
-        int BattPersen(float Volt_Min, float Volt_Max);
+        // int BattPersen(float Volt_Min, float Volt_Max);
 
     private:
         int _pinADC;
@@ -41,4 +42,5 @@ class VoltSensor {
         // float _d = DEFAULT_LINEAR_D;
 };
 
+extern VoltSensor Volt;
 #endif
