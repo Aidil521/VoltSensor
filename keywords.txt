@@ -18,8 +18,8 @@ setResistor	KEYWORD2
 setBitRef	KEYWORD2
 setVoltRef	KEYWORD2
 setVoutCalib	KEYWORD2
-Vout		KEYWORD2
-Vin		KEYWORD2
+getVout		KEYWORD2
+getVin		KEYWORD2
 BattPersen	KEYWORD2
 
 #######################################

@@ -1,23 +1,20 @@
 #include <VoltSensor.h>
 
-VoltSensor Volt(39); // Pin ADC ESP32
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  Volt.setPins(36);
   Volt.setResistor(30000.0, 7500.0); //Default value resistor R1 and R2
   Volt.setBitRef(4095.0); //Default value bit adc micro
-  Volt.setVoltRef(3.3); //Default value voltage
-  Volt.setVoutCalib(DEFAULT_LINEAR_A, DEFAULT_LINEAR_B); //Default value calibration linear Vout
+  Volt.setVoltRef(5.0); //Default value voltage
+  Volt.setVoutCalib(DEFAULT_LINEAR_A, DEFAULT_LINEAR_B); //Default value calibration linear Vout data A = sensor, and B = mannual measurement
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  float Vout_Value = Volt.Vout();
-  Serial.println("Vout       : " + String(Vout_Value) + " Volt");
-  float Vin_Value = Volt.Vin();
-  Serial.println("Vin Calib  : " + String(Vin_Value) + " Volt");
-  int Battery = Volt.BattPersen(10.5, 12.4); // set Min and Max value Battery
-  Serial.println("Percent    : " + String(Battery) + "%");
+  float Vout_Value = Volt.getVout();
+  Serial.println("Voltage Output : " + String(Vout_Value) + " Volt"); //range value 0 - 3.3V
+  float Vin_Value = Volt.getVin();
+  Serial.println("Voltage Input  : " + String(Vin_Value) + " Volt"); //range value in power input
   delay(1000);
 }
